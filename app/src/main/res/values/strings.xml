@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">ColorPalette</string>
+
+
+    <string-array name="colors_array">
+        <item></item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Red</item>
+        <item>Magenta</item>
+    </string-array>
+
+
 </resources>

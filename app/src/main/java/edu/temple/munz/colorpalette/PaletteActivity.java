@@ -1,6 +1,7 @@
 package edu.temple.munz.colorpalette;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -20,7 +21,11 @@ public class PaletteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_palette);
 
-        final String colors[] = { "", "Blue", "Red", "Green", "Yellow", "Magenta"};
+        //this array is replaced in the strings.xml file
+        ///final String colors[] = { "", "Blue", "Red", "Green", "Yellow", "Magenta"};
+
+        Resources res = this.getResources();
+        final String[] colors = res.getStringArray(R.array.colors_array);
 
         spinner = findViewById(R.id.spinner);
         layout = findViewById(R.id.layoutPalette);
