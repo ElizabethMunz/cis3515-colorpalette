@@ -12,6 +12,7 @@ import android.widget.Spinner;
 
 public class PaletteActivity extends AppCompatActivity {
 
+    final public String COLOR_IDS = "ci";
 
     Spinner spinner;
     ConstraintLayout layout;
@@ -25,14 +26,16 @@ public class PaletteActivity extends AppCompatActivity {
         ///final String colors[] = { "", "Blue", "Red", "Green", "Yellow", "Magenta"};
 
         Resources res = this.getResources();
-        final String[] colors = res.getStringArray(R.array.colors_array);
+        final String[] colorNames = res.getStringArray(R.array.color_names_array);
 
         spinner = findViewById(R.id.spinner);
         layout = findViewById(R.id.layoutPalette);
 
+        final String[] colorIDs = res.getStringArray(R.array.colorIDs);
+
 
         //instantiate PaletteAdapter and apply it to the spinner
-        PaletteAdapter adapter = new PaletteAdapter(this, colors);
+        PaletteAdapter adapter = new PaletteAdapter(this, colorNames, colorIDs);
         spinner.setAdapter(adapter);
 
         //spinner listener
@@ -44,7 +47,7 @@ public class PaletteActivity extends AppCompatActivity {
                 if(!adapterView.getItemAtPosition(i).equals("")) {
                     //layout.setBackgroundColor(Color.parseColor(colors[i]));
                     Intent startCanvasIntent = new Intent(PaletteActivity.this, CanvasActivity.class);
-                    startCanvasIntent.putExtra("bgColor", colors[i]);
+                    startCanvasIntent.putExtra("bgColor", colorIDs[i]);
                     startActivityForResult(startCanvasIntent, 117);
                 }
             }
