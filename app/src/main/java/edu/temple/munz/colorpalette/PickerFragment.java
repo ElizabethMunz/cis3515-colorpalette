@@ -1,11 +1,20 @@
 package edu.temple.munz.colorpalette;
 
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.io.Console;
 
 
 /**
@@ -14,16 +23,55 @@ import android.view.ViewGroup;
 public class PickerFragment extends Fragment {
 
 
+    Spinner spinner;
+    Context parent;
+
+
     public PickerFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.parent = context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_picker, container, false);
+        View v = inflater.inflate(R.layout.fragment_picker, container, false);
+
+        //get reference to the spinner
+        spinner = v.findViewById(R.id.spinner);
+        spinner.setAdapter(new PaletteAdapter(parent, parent.getResources().getStringArray(R.array.color_names_array), parent.getResources().getStringArray(R.array.colorIDs)));
+
+        //spinner listener
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                //when a color is selected, open a new view with that color as the background
+                //only open new view if the user has selected something other than the default/first element
+                if(!adapterView.getItemAtPosition(i).equals("")) {
+                    //TODO: implement listener for spinner (get rid of below toast)
+                    String color = (String)adapterView.getItemAtPosition(i);
+                    ((GetColorInterface)parent).colorSelected(color);
+
+
+
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+        return v;
+    }
+
+
+    interface GetColorInterface {
+        void colorSelected(String color);
     }
 
 }
