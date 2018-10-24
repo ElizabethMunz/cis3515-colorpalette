@@ -55,10 +55,9 @@ public class PaletteActivity extends AppCompatActivity implements PickerFragment
     public void colorSelected(String color) {
         cf = (new CanvasFragment()).newInstance(color);
         if(singlePane) {
-            //TODO: go to new activity with the canvas fragment on it
+            fm.beginTransaction().replace(R.id.frameSpinner, cf).addToBackStack(null).commit();
         }
         else {
-            //TODO: set color on canvas fragment in current activity
             fm.beginTransaction()
                     .replace(R.id.frameCanvas, cf)
                     .addToBackStack(null)
