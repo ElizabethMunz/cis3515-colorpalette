@@ -6,6 +6,11 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+/*
+THIS ACTIVITY IS NOT BEING USED ANY MORE- IT HAS BEEN REPLACED BY CANVASFRAGMENT
+ */
+
+
 public class CanvasActivity extends AppCompatActivity {
 
 

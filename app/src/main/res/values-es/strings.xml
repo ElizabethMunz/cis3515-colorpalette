@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Paleta De Color</string>
+
+    <string-array name="colorIDs">
+        <item></item>
+        <item>BLUE</item>
+        <item>GREEN</item>
+        <item>YELLOW</item>
+        <item>RED</item>
+        <item>MAGENTA</item>
+    </string-array>
+
+    <string name="select">Selecciona un color:</string>
+
+    <string-array name="color_names_array">
+        <item></item>
+        <item>Azul</item>
+        <item>Verde</item>
+        <item>Amarillo</item>
+        <item>Rojo</item>
+        <item>Magenta</item>
+    </string-array>
+
+
+</resources>

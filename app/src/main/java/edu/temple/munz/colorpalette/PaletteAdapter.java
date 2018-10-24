@@ -9,24 +9,28 @@ import android.widget.TextView;
 
 public class PaletteAdapter extends BaseAdapter {
 
+
+
     Context context;
-    String colorList[];
+    String colorNames[];
+    String colorIDs[];
 
 
-    public PaletteAdapter(Context context, String colorList[]) {
+    public PaletteAdapter(Context context, String colorNames[], String colors[]) {
         this.context = context;
-        this.colorList = colorList;
+        this.colorNames = colorNames;
+        this.colorIDs = colors;
     }
 
 
     @Override
     public int getCount() {
-        return colorList.length;
+        return colorNames.length;
     }
 
     @Override
     public Object getItem(int i) {
-        return colorList[i];
+        return colorNames[i];
     }
 
     @Override
@@ -40,12 +44,13 @@ public class PaletteAdapter extends BaseAdapter {
         //make text white and background the color
         textView.setTextColor(Color.rgb(0,0,0));
         textView.setPadding(5, 2, 0, 2);
-        if(colorList[i].equals("")) {
-           textView.setText("Select a color");
+        if(colorNames[i].equals("")) {
+           textView.setText(R.string.select);
         }
         else {
-            textView.setText(colorList[i]);
-            textView.setBackgroundColor(Color.parseColor(colorList[i]));
+            textView.setText(colorNames[i]);
+            //parse the color from the color IDs, which will always be English, not the color Names that get translated
+            textView.setBackgroundColor(Color.parseColor(colorIDs[i]));
         }
         return textView;
     }
